@@ -8,7 +8,7 @@ import female from "../public/female.webp";
 
 export default function Home() {
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
-  const router = useRouter();
+  const router = useRouter()
 
   const getButtonStyles = (gender: string) => ({
     border:
@@ -18,7 +18,7 @@ export default function Home() {
 
   const handleGenderSelect = (gender: string) => {
     setSelectedGender(gender);
-    router.push("/quiz");
+    router.push(`/1?gender=${gender}`)
   };
 
   return (
