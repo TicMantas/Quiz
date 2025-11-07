@@ -3,77 +3,52 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import logo from "../public/logo.png";
-import male from "../public/male.webp";
-import female from "../public/female.webp";
+import male from "../public/male.png";
+import female from "../public/female.png";
+import GenderCard from "@/components/GenderCard";
 
-export default function Home() {
-  const [selectedGender, setSelectedGender] = useState<string | null>(null);
-  const router = useRouter()
-
-  const getButtonStyles = (gender: string) => ({
-    border:
-      selectedGender === gender ? "border-purple-700" : "border-[#5349db]",
-    bg: selectedGender === gender ? "bg-purple-700" : "bg-[#5349db]",
-  });
+const Home = () => {
+  const router = useRouter();
 
   const handleGenderSelect = (gender: string) => {
-    setSelectedGender(gender);
-    router.push(`/1?gender=${gender}`)
+    router.push(`/1?gender=${gender}`);
   };
 
+  const genderCardTypes = [
+    { id: 1, gender: "Male", image: male },
+    { id: 2, gender: "Female", image: female },
+  ];
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <nav className="flex justify-center">
-        <Image src={logo} alt="logo" className="w-30" />
-      </nav>
+    <div className="min-h-screen flex flex-col px-5 pb-5 gap-8">
+      <header className="flex justify-center pt-6">
+        <Image src={logo} alt="logo" className="w-15.5 h-9" />
+      </header>
 
-      <div className="flex flex-col pt-8">
-        <h1 className="text-3xl font-bold text-center mb-4">
-          What is your gender?
-        </h1>
-        <span className="text-gray-600 text-lg text-center">
-          We will use this to personalize your plan
-        </span>
-      </div>
-
-      <main className="flex-1 pb-8 max-w-sm mx-auto flex items-center justify-center">
-        <div className="flex gap-4">
-          <button
-            onClick={() => handleGenderSelect("male")}
-            className={`border-3 rounded-2xl overflow-hidden cursor-pointer flex flex-col ${
-              getButtonStyles("male").border
-            }`}
-          >
-            <Image src={male} alt="male" className="h-48 w-full object-cover" />
-            <div
-              className={`flex-1 flex items-center justify-center ${
-                getButtonStyles("male").bg
-              }`}
-            >
-              <h3 className="font-bold text-white p-2">Male</h3>
-            </div>
-          </button>
-          <button
-            onClick={() => handleGenderSelect("female")}
-            className={`border-3 rounded-2xl overflow-hidden cursor-pointer flex flex-col ${
-              getButtonStyles("female").border
-            }`}
-          >
-            <Image
-              src={female}
-              alt="female"
-              className="h-48 w-full object-cover"
-            />
-            <div
-              className={`flex-1 flex items-center justify-center ${
-                getButtonStyles("female").bg
-              }`}
-            >
-              <h3 className="font-bold text-white p-2">Female</h3>
-            </div>
-          </button>
-        </div>
+      <main className="flex-1 flex">
+        <section className="flex flex-col flex-1">
+          <div className="flex flex-col gap-3 flex-1">
+            <p className="text-2xl leading-7 font-semibold text-center">
+              What is your gender?
+            </p>
+            <p className="text-gray-600 leading-4.5 text-sm text-center">
+              We will use this to personalize your plan
+            </p>
+          </div>
+          <div className="flex flex-5 items-center justify-center gap-4">
+            {genderCardTypes.map((card) => (
+              <GenderCard
+                key={card.id}
+                gender={card.gender}
+                genderSelect={() => handleGenderSelect(card.gender)}
+                genderPicture={card.image}
+              />
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
-}
+};
+
+export default Home;
