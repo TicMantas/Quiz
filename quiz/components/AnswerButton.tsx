@@ -1,14 +1,12 @@
-import { quiz } from "@/services/quiz";
-import Image, { StaticImageData } from "next/image";
-import React from "react";
+import { IconKey, iconMap } from "@/services/quiz";
 
 type Props = {
   id: number;
   label: string;
-  icon: StaticImageData;
-  coloredIcon: StaticImageData;
+  icon: IconKey;
   selectedAnswer: number | undefined;
   index: number;
+  color: string;
   quizId: number;
   onClick: () => void;
 };
@@ -24,12 +22,13 @@ const AnswerButton = ({
   id,
   label,
   icon,
-  coloredIcon,
   selectedAnswer,
   index,
+  color,
   quizId,
   onClick,
 }: Props) => {
+  const IconComponent = iconMap[icon];
   return (
     <button
       key={id}
@@ -47,10 +46,9 @@ const AnswerButton = ({
       `}
       onClick={onClick}
     >
-      <Image
-        src={selectedAnswer === id ? icon : coloredIcon}
-        alt={label}
-        className={`${quizId < 3 ? "h-6 w-6" : "h-4 w-4"} object-contain`}
+      <IconComponent
+        size={quizId < 3 ? 24 : 16}
+        color={selectedAnswer === id ? "white" : color}
       />
       <span
         className={`font-semibold ${

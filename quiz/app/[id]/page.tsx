@@ -63,19 +63,19 @@ const QuizPage = () => {
         </nav>
         <ProgressBar total={quiz.length} current={id} />
       </header>
-      <div className="flex flex-col gap-6 justify-between flex-1">
+      <main className="flex flex-col gap-6 justify-between flex-1">
         <p className="text-2xl font-semibold leading-7 text-center">
           {quizData?.question}
         </p>
-        <div className="flex flex-col gap-2">
+        <section className="flex flex-col gap-2">
           {quizData?.options.map((option, index) => {
             return (
               <AnswerButton
+                color={option.color}
                 key={option.id}
                 id={option.id}
                 label={option.label}
                 icon={option.icon}
-                coloredIcon={option.coloredIcon}
                 selectedAnswer={selectedAnswer}
                 index={index}
                 quizId={id}
@@ -86,8 +86,8 @@ const QuizPage = () => {
               />
             );
           })}
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   );
 };
