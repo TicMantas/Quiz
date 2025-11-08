@@ -1,5 +1,3 @@
-import React from "react";
-
 type Props = {
   current: number;
   total: number;

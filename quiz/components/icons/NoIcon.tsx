@@ -1,0 +1,21 @@
+type Props = {
+  color: string;
+  size: number;
+};
+
+const NoIcon = ({ color, size }: Props) => {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="8" cy="8" r="7" stroke={color} strokeWidth="2" />
+      <path d="M2.8562 13.143L13.1419 2.8573" stroke={color} strokeWidth="2" />
+    </svg>
+  );
+};
+
+export default NoIcon;
