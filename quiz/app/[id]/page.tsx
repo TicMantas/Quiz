@@ -8,6 +8,7 @@ import { useState } from "react";
 import Image from "next/image";
 import ProgressBar from "@/components/ProgressBar";
 import AnswerButton from "@/components/AnswerButton";
+import Text from "@/components/Text";
 
 const QuizPage = () => {
   const params = useParams<{ id: string }>();
@@ -61,12 +62,12 @@ const QuizPage = () => {
             <span>/{quiz.length}</span>
           </div>
         </nav>
-        <ProgressBar total={quiz.length} current={id} />
+        <ProgressBar total={quiz.length} current={id} color="#767AF9" height={2}/>
       </header>
       <main className="flex flex-col gap-6 justify-between flex-1">
-        <p className="text-2xl font-semibold leading-7 text-center">
+        <Text additionalClass="text-center">
           {quizData?.question}
-        </p>
+        </Text>
         <section className="flex flex-col gap-2">
           {quizData?.options.map((option, index) => {
             return (
