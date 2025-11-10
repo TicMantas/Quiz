@@ -7,7 +7,7 @@ import female from "../public/female.png";
 import GenderCard from "@/components/GenderCard";
 import Text from "@/components/Text";
 
-const Home = () => {
+const LandingPage = () => {
   const router = useRouter();
 
   const handleGenderSelect = (gender: string) => {
@@ -51,4 +51,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default LandingPage;
