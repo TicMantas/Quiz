@@ -1,16 +1,21 @@
 type Props = {
   current: number;
   total: number;
+  color: string;
+  height: number;
 };
 
-const ProgressBar = ({ current, total }: Props) => {
+const ProgressBar = ({ current, total, color, height = 1}: Props) => {
   const percentage = (current / total) * 100;
   return (
-    <div className="w-full bg-[#E4E4E4] h-1  rounded-full">
+    <div style={{
+      height: height
+    }} className={`w-full bg-[#E4E4E4] h-[${height}] rounded-full`}>
       <div
-        className=" h-1  bg-[#767AF9] rounded-full"
+        className={` h-[${height}]  bg-[${color}] rounded-full`}
         style={{
           width: `${percentage}%`,
+          height: height
         }}
       ></div>
     </div>

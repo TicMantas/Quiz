@@ -5,6 +5,7 @@ import logo from "../public/logo.png";
 import male from "../public/male.png";
 import female from "../public/female.png";
 import GenderCard from "@/components/GenderCard";
+import Text from "@/components/Text";
 
 const Home = () => {
   const router = useRouter();
@@ -27,9 +28,9 @@ const Home = () => {
       <main className="flex-1 flex">
         <section className="flex flex-col flex-1">
           <div className="flex flex-col gap-3 flex-1">
-            <p className="text-2xl leading-7 font-semibold text-center">
+            <Text additionalClass="text-center">
               What is your gender?
-            </p>
+            </Text>
             <p className="text-gray-600 leading-4.5 text-sm text-center">
               We will use this to personalize your plan
             </p>

@@ -12,7 +12,7 @@ const GenderCard = ({ genderPicture, genderSelect, gender }: Props) => {
       onClick={genderSelect}
       className={`border-2 border-[#5349DB] rounded-lg cursor-pointer flex flex-col`}
     >
-      <Image src={genderPicture} alt="female" className=" w-full rounded-lg" />
+      <Image src={genderPicture} alt={gender} className=" w-full rounded-lg" />
       <div
         className={`flex-1 flex items-center justify-center bg-[#5349DB] p-5`}
       >
